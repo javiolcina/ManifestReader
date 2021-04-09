@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Specification-Title: Manifest Version Reader
+Specification-Version: v_0_9_0
+Specification-Vendor: Universitat València
+Implementation-Title: Manifest Version Reader
+Implementation-Version: v_0_9_0
+Implementation-Vendor: Jaolve@uv.es
+Created-By: Apache Maven 3.6.3
+Build-Jdk: 1.8.0_121
+Build-date: 9/4/2021
+Built-By: jaolve

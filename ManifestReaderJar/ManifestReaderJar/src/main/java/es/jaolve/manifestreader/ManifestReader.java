@@ -8,12 +8,19 @@ import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
 /**
- * Classe que permet llegir MANIFEST.MF amb el format Standard en el projectes de la UV
- * - MANIFEST.MF ha d'estar en format UTF8 per a que es vegent correctament els accents
- * - Soporta , al menys, a partir de la versió de Java J2SE 1.5
- * - soporta lectura de MANIFEST.MF de un Jar, WAR en Tomcat
- * 
- * 
+ * Classe que permet llegir MANIFEST.MF amb el format Standard en el projectes de la UV<br>
+ * - MANIFEST.MF ha d'estar en format UTF8 per a que es vegent correctament els accents<br>
+ * - Soporta , al menys, a partir de la versió de Java J2SE 1.5<br>
+ * - soporta lectura de MANIFEST.MF de un Jar, WAR en Tomcat en EAR en WAS <br><br>
+ *
+ * Un exemple típic d'utilització: <br>
+ *    <pre><code>
+ *           ManifestReader manifestReader = new ManifestReader(); <br>
+ *           Manifest m = manifestReader.getManifest(); <br>
+ *           System.out.println("\tSPECIFICATION_VERSION:"+m.getMainAttributes().getValue(Attributes.Name.SPECIFICATION_VERSION)); <br>
+ *           System.out.println("\tBuild-date:"+m.getMainAttributes().getValue("Build-date")); <br>
+ *    </code></pre>
+ *
  * @author jaolve
  *
  */
@@ -22,7 +29,7 @@ public class ManifestReader {
 	private String manifestPath = "/META-INF/MANIFEST.MF";
 	
 	/**
-	 * Constructor public
+	 * Constructor public per defecte
 	 */
 	public ManifestReader()
 	{}
@@ -38,11 +45,13 @@ public class ManifestReader {
 	}
 	
 	/**
-	 * A partir d'un classe es torna el Manifest
+	 * A partir d'una classe es torna el Manifest que estiga a l'ambit d'ixa classe. <br>
+	 * La classe típicament serà qualsevol classe de la aplicació. <br>
+	 * O si es vol saber la versió d'un jar s'hauria passar com a parámetre una classe d'ixe Jar. <br>
 	 * 
-	 * @param clz Classe que es gastarà per a localitzar un MANIFEST.MF en el jar que la continga
+	 * @param clz Classe que es gastarà per a localitzar un MANIFEST.MF en el jar o war(ear) que la continga
 	 * @return Manifest
-	 * @throws ManifestAccesException en el cas de que no trobe el jar
+	 * @throws ManifestAccesException en el cas de que no es trobe el manifest o qualsevol altre problema.
 	 */
 	public Manifest getManifest(Class<?> clz) throws ManifestAccesException
 	{
@@ -72,12 +81,12 @@ public class ManifestReader {
 	}
 	  
 	/**
-	 * A partir de la classe ManifestReader es torna el Manifest del propi Manifest Reader
+	 * Es torna el Manifest del propi Manifest Reader.
 	 * Aquest mètode no s'ha d'usar a no ser que es vullga traure la versió del propi Manifest Reader.
 	 * 
 	 *
 	 * @return Manifest
-	 * @throws ManifestAccesException en el cas de que no trobe el jar
+	 * @throws ManifestAccesException en el cas de que no es trobe el manifest o qualsevol altre problema.
 	 */
 	public Manifest getManifest() throws ManifestAccesException
 	{
@@ -85,11 +94,11 @@ public class ManifestReader {
 	}	
 	  
 	/**
-	 * Donat un jar torna el arxiu que conté
+	 * Donat un jar torna l'arxiu de MANIFEST que conté
 	 * 
 	 * @param archiveJar arxiu jar sobre el que buscarà el MANIFEST.MF
 	 * @return Manifest
-	 * @throws IOException en el cas de que no trobe el jar
+	 * @throws IOException en el cas de que no trobe el jar, no es trobe el manifest o qualsevol altre problema.
 	 */
 	public Manifest getManifestFromJar(String archiveJar) throws IOException
 	{
@@ -109,9 +118,9 @@ public class ManifestReader {
 	  }
 	
 	/**
-	 * Torna un inputStream per a que fitxer puga ser llegit
+	 * Torna un inputStream per a que fitxer de MANIFEST puga ser llegit de forma genèrica
 	 * 
-	 * @return InputStream al fitxer
+	 * @return InputStream al fitxer MANIFEST.MF
 	 */
 	public InputStream accessFile() {
 		String resource = manifestPath;

@@ -1,7 +1,7 @@
 package es.jaolve.manifestreader;
 
 /**
- * Classe genérica d'exepcions d'accés a un fitxer de Manifest
+ * Classe genèrica d'exepcions d'accés a un fitxer de Manifest
  */
 public class ManifestAccesException extends Exception {
 

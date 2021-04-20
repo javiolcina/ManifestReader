@@ -7,8 +7,8 @@ import java.util.Scanner;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 /**
- * Printer class per a comprovar el funcionament
- * Per a executar la prova es pot:  java  -cp TestManifestVersion.jar  es.jaolve.testmanifestversion.ManifestPrinter
+ * Printer class per a comprovar el funcionament de ManifestReader
+ * Per a executar la prova es pot executar:  java  -cp <jar amb les classes del ManifestReader + classes de test>  es.jaolve.manifestreader.ManifestPrinterTest
  * 
  * @author jaolve
  *

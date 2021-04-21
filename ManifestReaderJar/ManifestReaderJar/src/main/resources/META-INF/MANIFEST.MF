@@ -9,3 +9,4 @@ Created-By: Apache Maven 3.6.3
 Build-Jdk: 1.8.0_121
 Build-date: 9/4/2021
 Built-By: jaolve
+Sourcecode: https://github.com/javiolcina/ManifestReader.git
